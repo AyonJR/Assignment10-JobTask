@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { CiPhone } from "react-icons/ci";
 import { MdOutlineMail } from "react-icons/md";
+import { VscAccount } from "react-icons/vsc";
+
 
 
 export default function Navbar() {
@@ -96,7 +98,7 @@ export default function Navbar() {
                 : "opacity-0 -translate-x-full"
             }`}
           >
-            <div className="flex flex-col md:flex-row md:mx-6">
+            <div className="flex gap-4 items-center flex-col md:flex-row md:mx-6">
               <Link to={"/"}>
                 <a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-700 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
                   Home
@@ -114,14 +116,10 @@ export default function Navbar() {
                 </>
               ) : (
                 <>
+                 
                   <Link to={"/login"}>
                     <a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-700 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
-                      Login
-                    </a>
-                  </Link>
-                  <Link to={"/signup"}>
-                    <a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-700 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0">
-                      Signup
+                      <VscAccount></VscAccount>
                     </a>
                   </Link>
                 </>
