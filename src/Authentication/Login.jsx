@@ -1,11 +1,14 @@
+// Login.jsx
 import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useSnackbar } from 'notistack'; 
 
 export default function Login() {
   const navigate = useNavigate();
   const { loginUser, loginUserWithGoogle } = useContext(AuthContext);
+  const { enqueueSnackbar } = useSnackbar();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -15,20 +18,24 @@ export default function Login() {
     loginUser(email, password)
       .then((result) => {
         console.log(result);
+        enqueueSnackbar("Login successful!", { variant: 'success' });
         navigate("/");
       })
       .catch((error) => {
         console.log(error);
+        enqueueSnackbar("Login failed. Please try again.", { variant: 'error' });
       });
   };
 
   const handleGoogleSignIn = () => {
     loginUserWithGoogle()
       .then(() => {
+        enqueueSnackbar("Login with Google successful!", { variant: 'success' });
         navigate("/");
       })
       .catch((error) => {
         console.log(error);
+        enqueueSnackbar("Google sign-in failed. Please try again.", { variant: 'error' });
       });
   };
 

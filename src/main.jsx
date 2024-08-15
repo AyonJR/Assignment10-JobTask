@@ -1,3 +1,4 @@
+// main.jsx
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
@@ -7,6 +8,7 @@ import Login from "./Authentication/Login.jsx";
 import Signup from "./Authentication/Signup.jsx";
 import AuthProvider from "./AuthProvider/AuthProvider.jsx";
 import Home from "./Home/Home.jsx";
+import { SnackbarProvider } from 'notistack'; // Import SnackbarProvider
 
 const router = createBrowserRouter([
   {
@@ -32,9 +34,11 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router}>
-        <App></App>
-      </RouterProvider>
+      <SnackbarProvider maxSnack={3}> {/* Wrap with SnackbarProvider */}
+        <RouterProvider router={router}>
+          <App></App>
+        </RouterProvider>
+      </SnackbarProvider>
     </AuthProvider>
   </StrictMode>
 );

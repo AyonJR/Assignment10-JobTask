@@ -1,22 +1,20 @@
 import { Outlet } from "react-router-dom";
 import "./App.css";
 import Navbar from "./Navbar/Navbar";
-import Home from "./Home/Home";
 import Footer from "./Footer/Footer";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
     <div>
-      <div>
-        <Navbar></Navbar>
+      <Navbar />
+      <main>
+        <Outlet />
+      </main>
+      <div className="mt-40">
+      <Footer />
       </div>
       
-      <div>
-        <Outlet></Outlet>
-      </div>
-      <div className="mt-40">
-        <Footer></Footer>
-      </div>
     </div>
   );
 }

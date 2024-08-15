@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import { enqueueSnackbar, useSnackbar } from 'notistack'; 
+
 
 const Signup = () => {
   const { createUser, loginUserWithGoogle } = useContext(AuthContext);
@@ -17,10 +19,13 @@ const Signup = () => {
       createUser(email, password)
         .then((result) => {
           console.log(result.user);
+          enqueueSnackbar("Signup successful!", { variant: 'success' });
+
           navigate("/");
         })
         .catch((error) => {
           console.log(error);
+          enqueueSnackbar("Signup failed. Please try again.", { variant: 'error' });
         });
     } else {
       console.error("Passwords do not match");
@@ -30,10 +35,12 @@ const Signup = () => {
   const handleGoogleSignup = () => {
     loginUserWithGoogle()
       .then(() => {
+        enqueueSnackbar("Signup with Google successful!", { variant: 'success' });
         navigate("/");
       })
       .catch((error) => {
         console.error(error);
+        enqueueSnackbar("Google Signup failed. Please try again.", { variant: 'error' });
       });
   };
 
