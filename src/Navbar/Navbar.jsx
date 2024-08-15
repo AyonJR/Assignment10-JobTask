@@ -8,7 +8,7 @@ export default function Navbar() {
         <nav className="relative  ">
             <div className="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
                 <div className="flex items-center justify-between">
-                    <h2 className='custom-font text-3xl text-customPurple font-medium'>SORTIFY</h2>
+                    <h2 className='custom-font text-3xl text-customPurple font-medium'>GRIPPABLE</h2>
 
                     {/* Mobile menu button */}
                     <div className="flex lg:hidden">

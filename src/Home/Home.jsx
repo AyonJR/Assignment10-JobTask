@@ -17,10 +17,17 @@ const Home = () => {
     const fetchProducts = async () => {
       try {
         const response = await axios.get("http://localhost:5000/allProducts", {
-          params: { page: currentPage, limit },
+          params: { 
+            page: currentPage, 
+            limit,
+            searchTerm,
+            brand: brandFilter,
+            category: categoryFilter,
+            priceRange: priceRangeFilter,
+            sort: sortOption
+          },
         });
 
-        console.log("Fetched products:", response.data.products); // Debugging line
         setProducts(response.data.products);
         setTotalPages(response.data.totalPages);
       } catch (error) {
@@ -29,7 +36,7 @@ const Home = () => {
     };
 
     fetchProducts();
-  }, [currentPage]);
+  }, [currentPage, searchTerm, brandFilter, categoryFilter, priceRangeFilter, sortOption]);
 
   const handlePageChange = (page) => {
     if (page > 0 && page <= totalPages) {
@@ -37,51 +44,20 @@ const Home = () => {
     }
   };
 
-  // Filter products based on search term, brand, category, and price range
-  const filteredProducts = products
-    .filter((product) =>
-      product.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .filter((product) => (brandFilter ? product.brand === brandFilter : true))
-    .filter((product) =>
-      categoryFilter ? product.category === categoryFilter : true
-    )
-    .filter((product) => {
-      if (priceRangeFilter === "low") return product.price < 50;
-      if (priceRangeFilter === "medium")
-        return product.price >= 50 && product.price <= 100;
-      if (priceRangeFilter === "high") return product.price > 100;
-      return true;
-    });
-
-  console.log("Filtered products:", filteredProducts); // Debugging line
-
-  // Sort products based on the selected option
-  const sortedProducts = filteredProducts.sort((a, b) => {
-    if (sortOption === "priceLowToHigh") return a.price - b.price;
-    if (sortOption === "priceHighToLow") return b.price - a.price;
-    if (sortOption === "newest")
-      return new Date(b.dateAdded) - new Date(a.dateAdded);
-    return 0;
-  });
-
-  console.log("Sorted products:", sortedProducts); // Debugging line
-
   return (
     <div>
-      <div>
-        <h1 className="text-4xl font-bold text-center mb-10 text-gray-800 custom-font">
+      <div className="bg-black">
+        <h1 className="text-4xl p-20 font-bold text-center mb-10 text-white custom-font">
           Our Premium <span className="text-customPurple">Products</span>
         </h1>
       </div>
-     
+
       <div className="flex lg:flex-row flex-col">
         <div className="w-1/5">
-          {/* Categorization and Sorting */}
-          <div className="p-4 mt-2 rounded-lg ">
-            <div className="flex py-2 rounded-2xl border border-slate-400  justify-center mb-4">
-            <h2 className="text-2xl  custom-font font-bold  ">Filter </h2>
-
+          {/* Filter and Sorting */}
+          <div className="p-4 mt-2 rounded-lg custom-font">
+            <div className="flex py-2 rounded-2xl border border-slate-400 justify-center mb-4">
+              <h2 className="text-2xl custom-font font-bold">Filter</h2>
             </div>
             <div className="mb-4">
               <label className="block font-semibold mb-2">Brand</label>
@@ -91,6 +67,7 @@ const Home = () => {
                 className="w-full p-2 border rounded-lg"
               >
                 <option value="">All Brands</option>
+                {/* Add more brand options here */}
                 <option value="Apple">Apple</option>
                 <option value="Samsung">Samsung</option>
                 <option value="Microsoft">Microsoft</option>
@@ -112,11 +89,6 @@ const Home = () => {
                 <option value="Bose">Bose</option>
                 <option value="Dell">Dell</option>
                 <option value="Canon">Canon</option>
-
-
-
-
-
               </select>
             </div>
             <div className="mb-4">
@@ -127,7 +99,7 @@ const Home = () => {
                 className="w-full p-2 border rounded-lg"
               >
                 <option value="">All Categories</option>
-                <option value="Cameras">Electronics</option>
+                <option value="Electronics">Electronics</option>
                 <option value="Fashion">Fashion</option>
                 <option value="Home">Home</option>
               </select>
@@ -161,19 +133,19 @@ const Home = () => {
           </div>
         </div>
 
-        {/* Cards div */}
-        <div className="container mx-auto w-4/5 p-6 ">
-        <div className="container mx-auto mb-6 ">
-        <input
-          type="text"
-          placeholder="Search for products..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-customPurple"
-        />
-      </div>
+        {/* Products Display */}
+        <div className="container mx-auto w-4/5 p-6">
+          <div className="container mx-auto mb-6">
+            <input
+              type="text"
+              placeholder="Search for products..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-customPurple"
+            />
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {sortedProducts.map((product) => (
+            {products.map((product) => (
               <div
                 key={product._id}
                 className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform hover:scale-105 hover:shadow-2xl"
@@ -182,7 +154,7 @@ const Home = () => {
                   <img
                     className="w-full h-56 object-cover"
                     src={product.image}
-                    alt={product.productName}
+                    alt={product.name}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-40"></div>
                   <h2 className="absolute bottom-0 left-0 p-4 text-2xl font-semibold text-white">
