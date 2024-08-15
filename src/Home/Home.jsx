@@ -47,7 +47,7 @@ const Home = () => {
   return (
     <div>
       <div className="bg-black">
-        <h1 className="text-4xl p-20 font-bold text-center mb-10 text-white custom-font">
+        <h1 className="text-4xl p-14 font-normal text-center mb-10 text-white custom-font">
           Our Premium <span className="text-customPurple">Products</span>
         </h1>
       </div>
