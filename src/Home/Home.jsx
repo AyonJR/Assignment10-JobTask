@@ -57,10 +57,10 @@ const Home = () => {
           {/* Filter and Sorting */}
           <div className="p-4 mt-2 rounded-lg custom-font">
             <div className="flex py-2 rounded-2xl border border-slate-400 justify-center mb-4">
-              <h2 className="text-2xl custom-font font-bold">Filter</h2>
+              <h2 className="text-2xl text-customPurple custom-font font-bold">Filter</h2>
             </div>
             <div className="mb-4">
-              <label className="block font-semibold mb-2">Brand</label>
+              <label className="block text-customPurple font-semibold mb-2">Brand</label>
               <select
                 value={brandFilter}
                 onChange={(e) => setBrandFilter(e.target.value)}
@@ -92,20 +92,33 @@ const Home = () => {
               </select>
             </div>
             <div className="mb-4">
-              <label className="block font-semibold mb-2">Category</label>
+              <label className="block text-customPurple font-semibold mb-2">Category</label>
               <select
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
                 className="w-full p-2 border rounded-lg"
               >
                 <option value="">All Categories</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Fashion">Fashion</option>
-                <option value="Home">Home</option>
+                <option value="Smartphones">Smartphones</option>
+                <option value="Laptops">Laptops</option>
+                <option value="Tablets">Tablets</option>
+                <option value="TVs">TVs</option>
+                <option value="Gaming Consoles">Gaming Consoles</option>
+                <option value="Headphones">Headphones</option>
+                <option value="Streaming Devices">Streaming Devices</option>
+                <option value="Wearables">Wearables</option>
+                <option value="Speakers">Speakers</option>
+                <option value="Desktops">Desktops</option>
+                <option value="Cameras">Cameras</option>
+                <option value="Smart Home">Smart Home</option>
+                <option value="Home Appliances">Home Appliances</option>
+                <option value="Accessories">Accessories</option>
+
+
               </select>
             </div>
             <div className="mb-4">
-              <label className="block font-semibold mb-2">Price Range</label>
+              <label className="block text-customPurple font-semibold mb-2">Price Range</label>
               <select
                 value={priceRangeFilter}
                 onChange={(e) => setPriceRangeFilter(e.target.value)}
@@ -118,7 +131,7 @@ const Home = () => {
               </select>
             </div>
             <div className="mb-4">
-              <label className="block font-semibold mb-2">Sort By</label>
+              <label className="block text-customPurple font-semibold mb-2">Sort By</label>
               <select
                 value={sortOption}
                 onChange={(e) => setSortOption(e.target.value)}
