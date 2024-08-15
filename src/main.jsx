@@ -6,6 +6,7 @@ import "./index.css";
 import Login from "./Authentication/Login.jsx";
 import Signup from "./Authentication/Signup.jsx";
 import AuthProvider from "./AuthProvider/AuthProvider.jsx";
+import Home from "./Home/Home.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path:"/",
+        element: <Home></Home>
       },
       {
         path: "/signup",
