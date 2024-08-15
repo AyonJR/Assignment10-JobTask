@@ -74,20 +74,15 @@ const Home = () => {
           Our Premium <span className="text-customPurple">Products</span>
         </h1>
       </div>
-      <div className="container mx-auto mb-6 px-36">
-        <input
-          type="text"
-          placeholder="Search for products..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-customPurple"
-        />
-      </div>
+     
       <div className="flex lg:flex-row flex-col">
         <div className="w-1/5">
           {/* Categorization and Sorting */}
-          <div className="p-4 bg-gray-100 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4">Filter by:</h2>
+          <div className="p-4 mt-2 rounded-lg ">
+            <div className="flex py-2 rounded-2xl border border-slate-400  justify-center mb-4">
+            <h2 className="text-2xl  custom-font font-bold  ">Filter </h2>
+
+            </div>
             <div className="mb-4">
               <label className="block font-semibold mb-2">Brand</label>
               <select
@@ -100,7 +95,6 @@ const Home = () => {
                 <option value="Samsung">Samsung</option>
                 <option value="Microsoft">Microsoft</option>
                 <option value="LG">LG</option>
-
                 <option value="Sony">Sony</option>
                 <option value="Nvidia">Nvidia</option>
                 <option value="Fitbit">Fitbit</option>
@@ -169,6 +163,15 @@ const Home = () => {
 
         {/* Cards div */}
         <div className="container mx-auto w-4/5 p-6 ">
+        <div className="container mx-auto mb-6 ">
+        <input
+          type="text"
+          placeholder="Search for products..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full p-3 border rounded-lg shadow-sm focus:outline-none focus:ring focus:border-customPurple"
+        />
+      </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {sortedProducts.map((product) => (
               <div
