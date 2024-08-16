@@ -8,7 +8,8 @@ import Login from "./Authentication/Login.jsx";
 import Signup from "./Authentication/Signup.jsx";
 import AuthProvider from "./AuthProvider/AuthProvider.jsx";
 import Home from "./Home/Home.jsx";
-import { SnackbarProvider } from 'notistack'; // Import SnackbarProvider
+import { SnackbarProvider } from 'notistack'; 
+import PrivateRoute from "./PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/",
-        element: <Home></Home>
+        element: <PrivateRoute><Home></Home></PrivateRoute>
       },
       {
         path: "/signup",
