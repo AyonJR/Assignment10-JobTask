@@ -48,4 +48,4 @@ Before you begin, ensure you have the following installed on your local machine:
 
 ### Server-side repository
 
-- https://github.com/AyonJR/Assignment-11-server
+- https://github.com/AyonJR/Assignment10-JobTask-server
