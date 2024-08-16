@@ -1,4 +1,4 @@
-# GRIPPABLE - Frontend
+# GRIPPABLE 
 
 ## Project Setup
 
@@ -17,4 +17,13 @@ Before you begin, ensure you have the following installed on your local machine:
 
    ```bash
    git clone https://github.com/AyonJR/Assignment10-JobTask
-   cd grippable-frontend
+
+2. **Change to the Project Directory:**
+
+3. **Install Dependencies:**
+
+4. **Configure Environment Variables:**
+
+5. **Start the Development Server:**
+
+6. **Run the Application:**
