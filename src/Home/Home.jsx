@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/allProducts", {
+        const response = await axios.get("https://assignment10-job-task-server.vercel.app/allProducts", {
           params: {
             page: currentPage,
             limit,
